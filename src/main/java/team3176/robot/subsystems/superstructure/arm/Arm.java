@@ -25,15 +25,15 @@ public class Arm extends SubsystemBase {
   private boolean ishomed = false;
   private double lastRollerSpeed = 0.0;
 
-   private enum pivotStates {
+  private enum pivotStates {
     DEPLOY,
     RETRACT,
     IDLE,
     HOLD,
-  }; 
+  };
 
   private pivotStates pivotState = pivotStates.HOLD;
-  //DigitalInput linebreak1 = new DigitalInput(Hardwaremap.ArmRollerLinebreak_DIO); 
+  // DigitalInput linebreak1 = new DigitalInput(Hardwaremap.ArmRollerLinebreak_DIO);
 
   private Arm(ArmIO io) {
     this.io = io;
@@ -85,11 +85,15 @@ public class Arm extends SubsystemBase {
   }
 
   public Command testVoltage() {
-    return this.runOnce(() -> io.setPivotVoltagePos(0.5)).andThen(() -> io.setPivotVoltagePos(0));
+    return this.runOnce(() -> io.setPivotVoltagePos(0.5));
   }
 
   public Command testVoltVelocity() {
     return this.runEnd(() -> io.setRollerVolts(1), () -> io.setRollerVolts(0));
+  }
+
+  public Command testRevVoltVelocity() {
+    return this.runEnd(() -> io.setRollerVolts(-1), () -> io.setRollerVolts(0));
   }
 
   @Override
@@ -107,10 +111,11 @@ public class Arm extends SubsystemBase {
     }
     commandVolts = MathUtil.clamp(commandVolts, -3.5, 2.0);
 
+    
     Logger.recordOutput("Arm/PID_out", commandVolts);
     Logger.recordOutput("Arm/setpoint", this.pivotSetpoint);
     Logger.recordOutput("Arm/offsetPos", pivot_pos);
-    //runPivot(commandVolts);
+    // runPivot(commandVolts);
     pivotPID.checkParemeterUpdate();
     if (inputs.lowerLimitSwitch && !ishomed) {
       ishomed = true;

@@ -13,13 +13,13 @@ public class Hardwaremap {
   public static final int shooterWheelRight_CID = 6;
   public static final int shooterTransfer_CID = 5;
   public static final int shooterPivot_CID = 8;
-  public static final int intakeRoller_CID = 9;
+  public static final int intakeRoller_CID = 45;
   public static final int indexerRoller_CID = 9;
   /*
   public static final int LaserCanIntakeSide_CID = 49;
   public static final int LaserCanShooterSide_CID = 48;
   */
-  public static final int intakePivot_CID = 4;
+  public static final int intakePivot_CID = 45;
   public static final int indexerPivot_CID = 4;
   public static final int climbLeft_CID = 45;
   public static final int climbRight_CID = 46;

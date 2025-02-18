@@ -19,11 +19,17 @@ public class Superstructure {
   }
 
   public Command testVoltPos() {
+    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     return arm.testVoltage();
   }
-  
+
   public Command testVoltVel() {
+    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     return arm.testVoltVelocity();
+  }
+
+  public Command testRevVoltVel() {
+    return arm.testRevVoltVelocity();
   }
 
   public Command getProcessorCoralLeftAuto() {

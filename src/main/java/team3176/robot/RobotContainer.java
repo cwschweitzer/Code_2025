@@ -145,6 +145,7 @@ public class RobotContainer {
         .button(8)
         .whileTrue(new InstantCommand(drivetrain::resetFieldOrientation, drivetrain));
 
+
     /*
      * Operator
      */
@@ -157,7 +158,7 @@ public class RobotContainer {
         */
     // controller.operator.povDown().onTrue(superstructure.intakeNote());
     controller.operator.x().whileTrue(superstructure.grabCoral());
-    controller.operator.a().onTrue(superstructure.testVoltPos());
+    controller.operator.a().whileTrue(superstructure.testVoltPos());
     controller.operator.b().whileTrue(superstructure.testVoltVel());
     /*  controller
            .switchBox

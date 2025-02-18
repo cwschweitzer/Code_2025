@@ -146,30 +146,6 @@ gversion {
     indent       = "  "
 }
 // Spotless formatting
-project.compileJava.dependsOn(spotlessApply)
-spotless {
-    java {
-        target fileTree(".") {
-            include "**/*.java"
-            exclude "**/build/**", "**/build-*/**", "**/.history/**"
-        }
-        toggleOffOn()
-        googleJavaFormat()
-        //removeUnusedImports()
-        indentWithSpaces(4)
-        trimTrailingWhitespace()
-        endWithNewline()
-    }
-    groovyGradle {
-        target fileTree(".") {
-            include "**/*.gradle"
-            exclude "**/build/**", "**/build-*/**", "**/.history/**"
-        }
-        greclipse()
-        indentWithSpaces(4)
-        trimTrailingWhitespace()
-        endWithNewline()
-    }
     // json {
     //     target fileTree(".") {
     //         include "**/*.json"
@@ -186,4 +162,4 @@ spotless {
     //     indentWithSpaces(2)
     //     endWithNewline()
     // }
-}
+
